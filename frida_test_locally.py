@@ -26,8 +26,8 @@ def inner_cb(data):
 	print(data)
 
 device = frida.get_usb_device()
-# pid = device.spawn(['com.google.android.calendar'])
-pid = device.spawn(['com.android.chrome'])
+pid = device.spawn(['com.google.android.calendar'])
+# pid = device.spawn(['com.android.chrome'])
 session = device.attach(pid)
 script = session.create_script(get_agent_source())
 script.on('message', on_message)
