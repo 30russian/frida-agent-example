@@ -1,10 +1,19 @@
 ### How to compile & load
 
 ```sh
-$ git clone git://github.com/oleavr/frida-agent-example.git
+$ git clone https://github.com/30russian/frida-agent-example.git
 $ cd frida-agent-example/
 $ npm install
-$ frida -U -f com.example.android --no-pause -l _agent.js
+$ virtualenv ./venv
+$ . venv/bin/activate
+$ pip install -r requirements.txt
+$ npm run build
+run emulator
+$ adb root
+$ adb push frida-server-15.1.14-android-x86_64 /data/local/tmp/
+$ adb shell "chmod 755 /data/local/tmp/frida-server-15.1.14-android-x86_64"
+$ adb shell "/data/local/tmp/frida-server-15.1.14-android-x86_64 &"
+$ python frida_test_locally.py
 ```
 
 ### Development workflow
